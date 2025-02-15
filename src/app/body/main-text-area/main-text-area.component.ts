@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FormControl} from '@angular/forms';
-import { ToolUtilityService } from '../../servies/tool-utility.service'
+import { ToolUtilityService } from '../../services/tool-utility.service'
 import { QUICK_TOOL_BAR_EVENTS } from '../../constants/event.constant'
 
 @Component({

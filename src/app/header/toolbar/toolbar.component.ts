@@ -2,7 +2,7 @@ import { Component, } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { ToolUtilityService } from '../../servies/tool-utility.service'
+import { ToolUtilityService } from '../../services/tool-utility.service'
 import { QUICK_TOOL_BAR_EVENTS } from '../../constants/event.constant'
 
 @Component({
