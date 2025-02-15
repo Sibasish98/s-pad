@@ -1,0 +1,8 @@
+<div class="main-area-container">
+    <div class="line-details">
+        @for ( line of lineCount; track line) {
+            <p class="line-number">{{line}}</p>
+        }
+    </div>
+    <textarea [formControl]="mainTextAreaInput" class="main-text-area"></textarea>
+</div>
