@@ -10,7 +10,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color-scheme: light;
     @include mat.theme((
       color: mat.$blue-palette,
-      typography: Roboto,
       density: 0
     ));
   }
