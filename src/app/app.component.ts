@@ -11,7 +11,4 @@ import { MainTextAreaComponent } from "./body/main-text-area/main-text-area.comp
 export class AppComponent {
   title = 's-pad';
 
-  formatJson(){
-    
-  }
 }

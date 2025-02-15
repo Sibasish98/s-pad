@@ -1,5 +1,8 @@
-<mat-toolbar>
+<mat-toolbar style="justify-content: space-between;">
     <span>S - Pad</span>
+    <div class="app-bar-right">
+    <p><mat-slide-toggle (change)="onToggleDarkMode($event)">Dark Mode</mat-slide-toggle></p>
+    </div>
 </mat-toolbar>
 <mat-toolbar>
     <div class="quick-toolbar-container">
