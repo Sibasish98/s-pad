@@ -39,15 +39,19 @@ ngOnInit(): void {
 }
 
 onQuickToolbarEvent(event:string){
+  const mainTextArea = this.tabs[this.activeTabIndex-1]
   switch (event){
     case QUICK_TOOL_BAR_EVENTS.FORMAT_JSON:
-    const mainTextArea = this.tabs[this.activeTabIndex]
     const formatedJson = this.toolUtilityService.formatJson(mainTextArea.mainTextAreaInput.value)
     if (formatedJson)
       mainTextArea.mainTextAreaInput.setValue(formatedJson as string)
     break;
+    case QUICK_TOOL_BAR_EVENTS.SAVE_AS:
+      console.log(mainTextArea)
+      this.toolUtilityService.saveToFile(mainTextArea.name,mainTextArea.mainTextAreaInput.value);
+    break;
   }
-  this.saveTabs();
+ this.saveTabs();
 }
 
 addTab() {
@@ -87,7 +91,7 @@ saveTabs() {
 
 loadTabs() {
   const savedTabs = JSON.parse(localStorage.getItem('tabsData') || '[]');
-  if (savedTabs) {
+  if (savedTabs.length > 0) {
     this.tabs = savedTabs.map((tab:any)=> ({
       id: tab.id,
       name: tab.name,

@@ -32,4 +32,8 @@ export class ToolbarComponent {
     this.isDarkModeActive = !this.isDarkModeActive
     this.themeService.toggleTheme();
   }
+  reset(){
+    localStorage.clear();
+    window.location.reload();
+  }
 }

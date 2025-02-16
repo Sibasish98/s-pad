@@ -35,4 +35,13 @@ export class ToolUtilityService {
       return
     }
   }
+
+  saveToFile(fileName: string,content: string) {
+    const blob = new Blob([content], { type: 'text/plain' });
+    const anchor = document.createElement('a');
+    anchor.href = URL.createObjectURL(blob);
+    anchor.download = `${fileName}.txt`;
+    anchor.click();
+    URL.revokeObjectURL(anchor.href);
+  }
 }
