@@ -1,6 +1,9 @@
 <mat-toolbar style="justify-content: space-between;">
-    <!-- <img src-="./src/assets/s_pad_icon_96x96.png" alt="logo" /> -->
-    <span>S Pad + -</span>
+    <!-- <img class="app-bar-logo" src="assets/s_pad_small.png" alt="logo" /> -->
+    <div class="app-title-container">
+    <mat-icon class="appbar-logo-icon">description</mat-icon>
+    <span class="app-title-name">S Pad + -</span>
+    </div>
     <div class="app-bar-right">
     <p><mat-slide-toggle (change)="onToggleDarkMode($event)">Dark Mode</mat-slide-toggle></p>
     </div>
