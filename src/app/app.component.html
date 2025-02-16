@@ -1,4 +1,11 @@
+@if (isPWAmode){
 <div class="app-container">
 <app-toolbar></app-toolbar>
 <app-main-text-area></app-main-text-area>
 </div>
+}
+@else {
+    <div  class="app-container">
+        <app-homepage></app-homepage>
+    </div>
+}

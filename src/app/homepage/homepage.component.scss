@@ -1,0 +1,48 @@
+.main-container {
+        background: radial-gradient(circle, rgba(0, 221, 255, 0.9) 0%, rgba(0, 30, 60, 0.8) 50%, rgba(0, 10, 20, 1) 100%);
+            width: 100%;
+        height: 100%;
+}
+.install-btn {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 40px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #00D1FF, #8E44AD); /* Blue to Purple Gradient */
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .install-btn:hover {
+    background: linear-gradient(45deg, #8E44AD, #00D1FF);
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  .home-page-logo{
+    position: fixed;
+    top: 21%;
+    left: 36%;
+  }
+  .image-fade {
+    width: 300px; /* Adjust as needed */
+    height: auto;
+    mask-image: radial-gradient(circle, 
+    rgba(0, 255, 255, 1) 15%,  /* Solid cyan only in the small center */
+    rgba(0, 255, 255, 0.3) 35%,  /* Starts fading */
+    rgba(0, 255, 255, 0) 70%  /* Completely faded out */
+);
+
+-webkit-mask-image: radial-gradient(circle, 
+    rgba(0, 255, 255, 1) 15%,  
+    rgba(0, 255, 255, 0.3) 35%,  
+    rgba(0, 255, 255, 0) 70%
+);
+  }
+
+  
