@@ -12,8 +12,19 @@ export class HomepageComponent implements OnInit{
   installPromptEvent: any; // Store the install event
   showInstallButton = false; 
 
+  texts: string[] = [
+    "console.log('Welcome to S Pad +-');",
+    "SELECT * FROM notepad WHERE type = 'Ultimate';",
+    'cout << "Notepad, Redefined!";',
+    "print('Hello, Developers!')"
+  ];
+  currentText: string = '';
+  index: number = 0;
+  charIndex: number = 0;
+  typingSpeed: number = 100; // Speed of typing in ms
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.startTypingEffect();
   }
 
   @HostListener('window:beforeinstallprompt', ['$event'])
@@ -36,5 +47,24 @@ export class HomepageComponent implements OnInit{
         this.showInstallButton = false; // Hide the button after interaction
       });
     }
+  }
+
+  openPWA() {
+    //window.location.href = "yourapp://open";
+  }
+
+  startTypingEffect() {
+    setInterval(() => {
+      if (this.charIndex < this.texts[this.index].length) {
+        this.currentText += this.texts[this.index][this.charIndex];
+        this.charIndex++;
+      } else {
+        setTimeout(() => {
+          this.currentText = '';
+          this.charIndex = 0;
+          this.index = (this.index + 1) % this.texts.length;
+        }, 1000);
+      }
+    }, this.typingSpeed);
   }
 }

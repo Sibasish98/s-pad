@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
 .main-container {
         background: radial-gradient(circle, rgba(0, 221, 255, 0.9) 0%, rgba(0, 30, 60, 0.8) 50%, rgba(0, 10, 20, 1) 100%);
             width: 100%;
@@ -5,29 +7,29 @@
 }
 .install-btn {
     position: fixed;
-    top: 50%;
+    top: 69%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px 40px;
     font-size: 24px;
     font-weight: bold;
     color: white;
-    background: linear-gradient(45deg, #00D1FF, #8E44AD); /* Blue to Purple Gradient */
+    background: linear-gradient(45deg, #00D1FF, #408bc8); /* Blue to Purple Gradient */
     border: none;
-    border-radius: 12px;
+    border-radius: 20px;
     cursor: pointer;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease-in-out;
   }
   
   .install-btn:hover {
-    background: linear-gradient(45deg, #8E44AD, #00D1FF);
+    background: linear-gradient(45deg, #408bc8, #00D1FF);
     transform: translate(-50%, -50%) scale(1.05);
   }
   .home-page-logo{
     position: fixed;
     top: 21%;
-    left: 36%;
+    left: 43%;
   }
   .image-fade {
     width: 300px; /* Adjust as needed */
@@ -44,5 +46,68 @@
     rgba(0, 255, 255, 0) 70%
 );
   }
-
+  .open-btn{
+    top: 77%;
+  }
+  .spad-text {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, #00eaff, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 10px rgba(0, 255, 255, 0.8);
+    animation: glow 1.5s infinite alternate;
+    position: fixed;
+    top: 45%;
+    left: 45%;
+  }
   
+  @keyframes glow {
+    from {
+      text-shadow: 2px 2px 15px rgba(0, 255, 255, 0.9);
+    }
+    to {
+      text-shadow: 2px 2px 25px rgba(255, 255, 255, 1);
+    }
+  }
+.tagline {
+    font-size: 1.5rem;
+    font-weight: 500;
+    opacity: 0.9;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 1px 1px 10px rgba(0, 255, 255, 0.5);
+    top: 52%;
+    left: 43%;
+    position: fixed;
+  }
+  .terminal {
+    font-family: 'Courier New', monospace;
+    font-size: 1.4rem;
+    background: rgba(25, 44, 53, 0.7);
+    padding: 15px 30px;
+    border-radius: 10px;
+    color: #00eaff;
+    margin-top: 20px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 4px solid #00eaff;
+    width: auto;
+    animation: blinkCursor 0.8s infinite;
+    position: fixed;
+    top: 56%;
+    left: 37%;
+  }
+  
+  .cursor {
+    animation: blink 1s step-end infinite;
+  }
+  
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+  
+  @keyframes blinkCursor {
+    50% { border-color: transparent; }
+  }
