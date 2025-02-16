@@ -47,7 +47,6 @@ onQuickToolbarEvent(event:string){
       mainTextArea.mainTextAreaInput.setValue(formatedJson as string)
     break;
     case QUICK_TOOL_BAR_EVENTS.SAVE_AS:
-      console.log(mainTextArea)
       this.toolUtilityService.saveToFile(mainTextArea.name,mainTextArea.mainTextAreaInput.value);
     break;
   }
@@ -92,12 +91,22 @@ saveTabs() {
 loadTabs() {
   const savedTabs = JSON.parse(localStorage.getItem('tabsData') || '[]');
   if (savedTabs.length > 0) {
-    this.tabs = savedTabs.map((tab:any)=> ({
-      id: tab.id,
-      name: tab.name,
-      lineCount: tab.lineCount,
-      mainTextAreaInput: new FormControl(tab.mainTextAreaInput)
-    }));
+    this.tabs = savedTabs.map((tab: any) => {
+      const control = new FormControl(tab.mainTextAreaInput);
+
+
+      return {
+        id: tab.id,
+        name: tab.name,
+        lineCount: tab.lineCount,
+        mainTextAreaInput: control
+      };
+    });
+    this.tabs.forEach((_:any) => {
+      _.mainTextAreaInput.valueChanges.subscribe(() => {
+        this.updateLineNumbers(_);
+      });
+    })
     this.activeTabIndex = this.tabs.length ? this.tabs[0].id : null;
   } else {
     this.addTab();
