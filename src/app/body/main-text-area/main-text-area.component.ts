@@ -22,13 +22,14 @@ export class MainTextAreaComponent implements OnInit{
  constructor(
   private toolUtilityService: ToolUtilityService
  ){
-  this.addTab();
+  this.loadTabs();
  }
 
  updateLineNumbers(tab: DocumentTab) {
   const text = tab.mainTextAreaInput.value || '';
   const lineCount = text.split("\n").length;
   tab.lineCount = Array.from({ length: lineCount }, (_, i) => i + 1);
+  this.saveTabs();
 }
 
 ngOnInit(): void {
@@ -46,6 +47,7 @@ onQuickToolbarEvent(event:string){
       mainTextArea.mainTextAreaInput.setValue(formatedJson as string)
     break;
   }
+  this.saveTabs();
 }
 
 addTab() {
@@ -60,6 +62,7 @@ addTab() {
     this.updateLineNumbers(newTab);
   });
   this.activeTabIndex = this.tabs.length - 1; // Switch to the new tab
+  this.saveTabs();
 }
 
 closeTab(index: number) {
@@ -68,6 +71,32 @@ closeTab(index: number) {
     this.addTab(); // Ensure at least one tab remains open
   } else if (this.activeTabIndex >= this.tabs.length) {
     this.activeTabIndex = this.tabs.length - 1;
+  }
+  this.saveTabs();
+}
+
+saveTabs() {
+  const cleanTabs = this.tabs.map((tab:any) => ({
+    id: tab.id,
+    name: tab.name,
+    mainTextAreaInput: tab.mainTextAreaInput.value,
+    lineCount: tab.lineCount,
+  }));
+  localStorage.setItem('tabsData', JSON.stringify(cleanTabs));
+}
+
+loadTabs() {
+  const savedTabs = JSON.parse(localStorage.getItem('tabsData') || '[]');
+  if (savedTabs) {
+    this.tabs = savedTabs.map((tab:any)=> ({
+      id: tab.id,
+      name: tab.name,
+      lineCount: tab.lineCount,
+      mainTextAreaInput: new FormControl(tab.mainTextAreaInput)
+    }));
+    this.activeTabIndex = this.tabs.length ? this.tabs[0].id : null;
+  } else {
+    this.addTab();
   }
 }
 
