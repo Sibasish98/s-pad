@@ -1,8 +1,31 @@
-<div class="main-area-container">
+<div class="tabs-container">
+    <mat-tab-group [(selectedIndex)]="activeTabIndex" mat-stretch-tabs="false">
+        @for (tab of tabs;track tab;let i = $index,last = $last){
+            <mat-tab [label]="tab.name">
+                <ng-template mat-tab-label>
+                    <span>{{tab.name}}</span> <mat-icon class="close-icon" (click)="closeTab(i)">cancel</mat-icon>
+                    @if (last) {
+                        <mat-icon class="add-icon" (click)="addTab()">add</mat-icon>
+                    }
+                  </ng-template>
+                <div class="main-area-container">
+                    <div class="line-details">
+                        @for ( line of tab.lineCount; track line) {
+                            <p class="line-number">{{line}}</p>
+                        }
+                    </div>
+                    <textarea [formControl]="tab.mainTextAreaInput" class="main-text-area"></textarea>
+                </div>
+            </mat-tab>
+        }
+
+      </mat-tab-group>
+</div>
+<!-- <div class="main-area-container">
     <div class="line-details">
         @for ( line of lineCount; track line) {
             <p class="line-number">{{line}}</p>
         }
     </div>
     <textarea [formControl]="mainTextAreaInput" class="main-text-area"></textarea>
-</div>
+</div> -->

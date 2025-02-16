@@ -3,6 +3,10 @@
     height: 100%;
     font-size: 1rem;
 }
+textarea{
+    border: none;
+    outline: none;
+}
 .line-details{
     width: 4%;
     height: 100%;
@@ -16,4 +20,11 @@
 .line-number{
     font-size: 1rem;
     margin: 0px;
+}
+.close-icon{
+    font-size: 1.5rem;
+    margin-left: 18px;
+}
+.add-icon{
+    margin-left: 8px;
 }
