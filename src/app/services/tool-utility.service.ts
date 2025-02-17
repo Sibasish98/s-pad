@@ -52,7 +52,7 @@ export class ToolUtilityService {
       if ('showSaveFilePicker' in window) {
         // Modern browsers with File System Access API support
         const options = {
-          suggestedName: fileName,
+          suggestedName: `${fileName}.txt`,
           types: [
             {
               description: 'Text Files',

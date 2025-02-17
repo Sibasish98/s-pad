@@ -10,22 +10,30 @@ import { SNACK_BAR_STATUS } from '../../constants/snackbar.constant'
   styleUrl: './snackbar.component.scss'
 })
 export class SnackbarComponent {
+  snackBarIcon: string=''
+  snackBarIconColor: string='white'
   constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any) {
-    console.log(data); 
+    this.setInitialData();
   }
 
-  getIcon() {
+  setInitialData() {
     switch (this.data.snackType) {
       case SNACK_BAR_STATUS.SUCCESS:
-        return 'done';
+        this.snackBarIcon = 'done';
+        this.snackBarIconColor = 'yellowgreen';
+        break;
       case SNACK_BAR_STATUS.ERROR:
-        return 'error';
+        this.snackBarIcon = 'error';
+        this.snackBarIconColor = 'red';
+        break;
       case SNACK_BAR_STATUS.WARN:
-        return 'warning';
+        this.snackBarIcon = 'warning';
+        this.snackBarIconColor = 'yellow';
+        break;
       case SNACK_BAR_STATUS.INFO:
-        return 'info';
-      default:
-        return '';
+        this.snackBarIcon = 'info';
+        this.snackBarIconColor = 'blue';
+        break;
     }
   }
 }
