@@ -1,9 +1,12 @@
 <div class="tabs-container">
     <mat-tab-group [(selectedIndex)]="activeTabIndex" mat-stretch-tabs="false">
-        @for (tab of tabs;track tab;let i = $index,last = $last){
+        @for (tab of tabs;track tab;let i = $index,last = $last,count = $count){
             <mat-tab [label]="tab.name">
                 <ng-template mat-tab-label>
-                    <span>{{tab.name}}</span> <mat-icon class="close-icon" (click)="closeTab(i)">cancel</mat-icon>
+                    <span>{{tab.name}}</span> 
+                    @if (count > 1) {
+                    <mat-icon class="close-icon" (click)="closeTab(i)">cancel</mat-icon>
+                    }
                     @if (last) {
                         <mat-icon class="add-icon" (click)="addTab()">add</mat-icon>
                     }
