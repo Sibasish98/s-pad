@@ -28,6 +28,7 @@ export class ToolUtilityService {
     try {
       const parsed = JSON.parse(text || '');
       const formatedJSON = (JSON.stringify(parsed, null, 2)); // Format JSON with indentation
+      this.snackBarService.openSnackBar('Formated as JSON',3000, SNACK_BAR_STATUS.SUCCESS)
       return formatedJSON;
     } catch (error) {
       this.snackBarService.openSnackBar(error as string,3000, SNACK_BAR_STATUS.ERROR)

@@ -16,7 +16,7 @@ import { MatIconModule } from '@angular/material/icon'
 export class MainTextAreaComponent implements OnInit{
 
  activeTabIndex: any;
- tabCounter = 1;
+ tabCounter = 0;
  tabs:any = [];
 
  constructor(
@@ -39,7 +39,7 @@ ngOnInit(): void {
 }
 
 onQuickToolbarEvent(event:string){
-  const mainTextArea = this.tabs[this.activeTabIndex-1]
+  const mainTextArea = this.tabs[this.activeTabIndex]
   switch (event){
     case QUICK_TOOL_BAR_EVENTS.FORMAT_JSON:
     const formatedJson = this.toolUtilityService.formatJson(mainTextArea.mainTextAreaInput.value)
@@ -84,6 +84,7 @@ saveTabs() {
     name: tab.name,
     mainTextAreaInput: tab.mainTextAreaInput.value,
     lineCount: tab.lineCount,
+    tabCount: this.tabCounter
   }));
   localStorage.setItem('tabsData', JSON.stringify(cleanTabs));
 }
@@ -91,6 +92,7 @@ saveTabs() {
 loadTabs() {
   const savedTabs = JSON.parse(localStorage.getItem('tabsData') || '[]');
   if (savedTabs.length > 0) {
+    this.tabCounter = savedTabs[0].tabCount;
     this.tabs = savedTabs.map((tab: any) => {
       const control = new FormControl(tab.mainTextAreaInput);
 
