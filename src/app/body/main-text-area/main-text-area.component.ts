@@ -49,6 +49,9 @@ onQuickToolbarEvent(event:string){
     case QUICK_TOOL_BAR_EVENTS.DOWNLOAD:
       this.toolUtilityService.saveToFile(mainTextArea.name,mainTextArea.mainTextAreaInput.value);
     break;
+    case QUICK_TOOL_BAR_EVENTS.SAVE_AS:
+      this.toolUtilityService.saveAsFile(mainTextArea.name,mainTextArea.mainTextAreaInput.value)
+      break;
   }
  this.saveTabs();
 }

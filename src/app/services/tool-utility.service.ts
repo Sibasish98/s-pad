@@ -45,4 +45,34 @@ export class ToolUtilityService {
     anchor.click();
     URL.revokeObjectURL(anchor.href);
   }
+
+  async saveAsFile(fileName: string,content: string) {
+  
+    try {
+      if ('showSaveFilePicker' in window) {
+        // Modern browsers with File System Access API support
+        const options = {
+          suggestedName: fileName,
+          types: [
+            {
+              description: 'Text Files',
+              accept: { 'text/plain': ['.txt'] }
+            }
+          ]
+        };
+  
+        const fileHandle = await (window as any).showSaveFilePicker(options);
+        const writable = await fileHandle.createWritable();
+        await writable.write(content);
+        await writable.close();
+        
+        console.log('File saved successfully!');
+      } else {
+        // Fallback for unsupported browsers
+        this.saveToFile(content, fileName);
+      }
+    } catch (err) {
+      console.error('File save canceled or failed', err);
+    }
+  }
 }
