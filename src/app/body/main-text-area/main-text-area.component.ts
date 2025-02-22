@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FormControl} from '@angular/forms';
 import { ToolUtilityService } from '../../services/tool-utility.service'
@@ -6,10 +6,11 @@ import { QUICK_TOOL_BAR_EVENTS } from '../../constants/event.constant'
 import {MatTabsModule} from '@angular/material/tabs';
 import { DocumentTab } from '../../model/tab-data-model'
 import { MatIconModule } from '@angular/material/icon'
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-main-text-area',
-  imports: [ReactiveFormsModule, MatTabsModule, MatIconModule],
+  imports: [ReactiveFormsModule, MatTabsModule, MatIconModule, MatTooltipModule],
   templateUrl: './main-text-area.component.html',
   styleUrl: './main-text-area.component.scss'
 })
@@ -18,6 +19,17 @@ export class MainTextAreaComponent implements OnInit{
  activeTabIndex: any;
  tabCounter = 0;
  tabs:any = [];
+
+
+ @HostListener('window:keydown', ['$event'])
+ handleKeyboardEvent(event: KeyboardEvent) {
+
+   if (event.shiftKey && event.key.toLowerCase() === 'n') {
+     event.preventDefault(); 
+     this.addTab();
+   }
+ }
+
 
  constructor(
   private toolUtilityService: ToolUtilityService

@@ -5,10 +5,10 @@
                 <ng-template mat-tab-label>
                     <span>{{tab.name}}</span> 
                     @if (count > 1) {
-                    <mat-icon class="close-icon" (click)="closeTab(i)">cancel</mat-icon>
+                    <mat-icon class="close-icon" (click)="closeTab(i)" matTooltip="Close Tab">cancel</mat-icon>
                     }
                     @if (last) {
-                        <mat-icon class="add-icon" (click)="addTab()">add</mat-icon>
+                        <mat-icon class="add-icon" (click)="addTab()" matTooltip="New Tab">add</mat-icon>
                     }
                   </ng-template>
                 <div class="main-area-container">
