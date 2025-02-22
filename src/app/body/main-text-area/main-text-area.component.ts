@@ -22,6 +22,9 @@ export class MainTextAreaComponent implements OnInit{
  tabCounter = 0;
  tabs:any = [];
  languages = ['json', 'javascript', 'sql'];
+ showTooltip = false;
+ tooltipPosition = { x: 0, y: 0 };
+ selectedText = '';
 
 
  @HostListener('window:keydown', ['$event'])
@@ -168,6 +171,27 @@ syncScroll(event: Event, tab: DocumentTab) {
 
 onTabChange(event: any){
   this.highlightCode(this.tabs[event.index])
+}
+
+showActionButtons(event: MouseEvent, tab: DocumentTab) {
+  const textarea = event.target as HTMLTextAreaElement;
+  const selection = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+  console.log('selected text ',selection)
+  if (selection) {
+      this.selectedText = selection;
+      this.tooltipPosition = { x: event.clientX + 10, y: event.clientY - 30 };
+      this.showTooltip = true;
+  } else {
+      this.showTooltip = false;
+  }
+}
+
+copySelectedText() {
+  if (this.selectedText) {
+      navigator.clipboard.writeText(this.selectedText).then(() => {
+          this.showTooltip = false;
+      });
+  }
 }
 
 }

@@ -24,7 +24,7 @@
                         
                         <textarea spellcheck="false" autocorrect="off" autocomplete="off" autocapitalize="off"
                             [formControl]="tab.mainTextAreaInput" class="main-text-area" (input)="highlightCode(tab)"
-                            (scroll)="syncScroll($event, tab)">
+                            (scroll)="syncScroll($event, tab)"   (mouseup)="showActionButtons($event, tab)">
                                                 </textarea>
                     </div>
                 </div>
@@ -32,6 +32,24 @@
         }
 
       </mat-tab-group>
+
+         <!-- Floating Action Menu (Appears on Text Selection) -->
+    @if (showTooltip) {
+    <div class="action-menu"
+    [style.top.px]="tooltipPosition.y"
+    [style.left.px]="tooltipPosition.x">
+   
+   <button mat-button class="action-btn" (click)="copySelectedText()">
+       <mat-icon class="tool-tip-action-btn-icon">content_copy</mat-icon>
+       <span>Copy</span>
+   </button>
+   <button mat-button class="action-btn" (click)="showTooltip = false">
+    <mat-icon class="tool-tip-action-btn-icon">close</mat-icon>
+    <span>Close</span>
+</button>
+
+</div>
+    }
 </div>
 <!-- <div class="main-area-container">
     <div class="line-details">
