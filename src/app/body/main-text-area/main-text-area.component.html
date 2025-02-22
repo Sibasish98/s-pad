@@ -1,5 +1,5 @@
 <div class="tabs-container">
-    <mat-tab-group [(selectedIndex)]="activeTabIndex" mat-stretch-tabs="false">
+    <mat-tab-group (selectedTabChange)="onTabChange($event)" [(selectedIndex)]="activeTabIndex" mat-stretch-tabs="false">
         @for (tab of tabs;track tab;let i = $index,last = $last,count = $count){
             <mat-tab [label]="tab.name">
                 <ng-template mat-tab-label>
@@ -22,10 +22,10 @@
                             <code class="language-json"></code>
                         </pre>
                         
-                        <textarea [formControl]="tab.mainTextAreaInput" class="main-text-area"
-                                  (input)="highlightCode(tab)" 
-                                  (scroll)="syncScroll($event, tab)">
-                        </textarea>
+                        <textarea spellcheck="false" autocorrect="off" autocomplete="off" autocapitalize="off"
+                            [formControl]="tab.mainTextAreaInput" class="main-text-area" (input)="highlightCode(tab)"
+                            (scroll)="syncScroll($event, tab)">
+                                                </textarea>
                     </div>
                 </div>
             </mat-tab>

@@ -125,6 +125,7 @@ loadTabs() {
         mainTextAreaInput: control
       };
     });
+    this.highlightCode(this.tabs[this.activeTabIndex])
     this.tabs.forEach((_:any) => {
       _.mainTextAreaInput.valueChanges.subscribe(() => {
         this.updateLineNumbers(_);
@@ -163,6 +164,10 @@ syncScroll(event: Event, tab: DocumentTab) {
       codeElement.scrollTop = textArea.scrollTop; // Sync vertical scroll
       codeElement.scrollLeft = textArea.scrollLeft; // Sync horizontal scroll
   }
+}
+
+onTabChange(event: any){
+  this.highlightCode(this.tabs[event.index])
 }
 
 }
