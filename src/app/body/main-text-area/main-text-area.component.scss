@@ -28,3 +28,83 @@ textarea{
 .add-icon{
     margin-left: 8px;
 }
+.code-container {
+    position: relative;
+    flex-grow: 1;
+    height: 100%;
+    font-family: monospace;
+    overflow: hidden;
+}
+
+/* Syntax Highlighting Block */
+.code-block {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background: #282c34;
+    color: white;
+    overflow: auto;
+    pointer-events: none;
+    font-size: 1rem;
+    border-radius: 0px;
+    line-height: 1.4;
+    
+}
+
+/* Editable Textarea */
+.main-text-area {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    background: transparent;
+    color: transparent;
+    caret-color: white;
+    border: none;
+    outline: none;
+    resize: none;
+    font-family: monospace;
+    font-size: 0.7rem;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 1.4;
+    //color: green;
+}
+
+/* Ensure Both Scroll Together */
+.code-block, .main-text-area {
+    overflow-y: auto;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.main-text-area::-webkit-scrollbar,
+.code-block::-webkit-scrollbar {
+    width: 6px;
+}
+
+.main-text-area::-webkit-scrollbar-thumb,
+.code-block::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 3px;
+}
+
+.code-block, .main-text-area {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    //padding: 10px;
+    font-family: 'Fira Code', 'Courier New', monospace;  /* Use a fixed-width font */
+    font-size: 14px; /* Ensure font size is identical */
+    line-height: 1.5; /* Keep line height the same */
+    letter-spacing: 0px; /* Prevent spacing issues */
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow: auto;
+}

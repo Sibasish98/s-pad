@@ -7,6 +7,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { DocumentTab } from '../../model/tab-data-model'
 import { MatIconModule } from '@angular/material/icon'
 import {MatTooltipModule} from '@angular/material/tooltip';
+import * as Prism from 'prismjs';
+import 'prismjs/components/prism-json';
 
 @Component({
   selector: 'app-main-text-area',
@@ -19,6 +21,7 @@ export class MainTextAreaComponent implements OnInit{
  activeTabIndex: any;
  tabCounter = 0;
  tabs:any = [];
+ languages = ['json', 'javascript', 'sql'];
 
 
  @HostListener('window:keydown', ['$event'])
@@ -41,6 +44,7 @@ export class MainTextAreaComponent implements OnInit{
   const text = tab.mainTextAreaInput.value || '';
   const lineCount = text.split("\n").length;
   tab.lineCount = Array.from({ length: lineCount }, (_, i) => i + 1);
+  this.highlightCode(tab);
   this.saveTabs();
 }
 
@@ -129,6 +133,35 @@ loadTabs() {
    // this.activeTabIndex = this.tabs.length ? this.tabs[0].id : null;
   } else {
     this.addTab();
+  }
+}
+
+highlightCode(tab: DocumentTab) {
+  setTimeout(() => {
+    const codeElement = document.getElementById(`code-block-${tab.id}`);
+    console.log('ele ',codeElement)
+    if (codeElement) {
+      const highlighted = Prism.highlight(
+        tab.mainTextAreaInput.value || '',
+        Prism.languages['json'],
+        'json'
+      );
+      codeElement.innerHTML = highlighted.replace(/\n/g, '<br>') + '<br>';
+    }
+  }, 0);
+}
+
+highlightAll() {
+  this.tabs.forEach((tab: any) => this.highlightCode(tab));
+}
+
+syncScroll(event: Event, tab: DocumentTab) {
+  const textArea = event.target as HTMLTextAreaElement;
+  const codeElement = document.getElementById(`code-block-${tab.id}`);
+  
+  if (codeElement) {
+      codeElement.scrollTop = textArea.scrollTop; // Sync vertical scroll
+      codeElement.scrollLeft = textArea.scrollLeft; // Sync horizontal scroll
   }
 }
 

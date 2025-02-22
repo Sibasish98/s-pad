@@ -17,7 +17,16 @@
                             <p class="line-number">{{line}}</p>
                         }
                     </div>
-                    <textarea [formControl]="tab.mainTextAreaInput" class="main-text-area"></textarea>
+                    <div class="code-container">
+                        <pre class="code-block language-json" [id]="'code-block-' + tab.id">
+                            <code class="language-json"></code>
+                        </pre>
+                        
+                        <textarea [formControl]="tab.mainTextAreaInput" class="main-text-area"
+                                  (input)="highlightCode(tab)" 
+                                  (scroll)="syncScroll($event, tab)">
+                        </textarea>
+                    </div>
                 </div>
             </mat-tab>
         }
