@@ -1,0 +1,36 @@
+.settings-container {
+    display: flex;
+    height: 100%; /* Ensure full height inside the dialog */
+  }
+  
+  /* Ensure the mat-tab-group is properly aligned */
+  .vertical-tabs {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Align tab labels vertically */
+  .vertical-tabs .mat-tab-labels {
+    flex-direction: column;
+    width: 150px; /* Sidebar width */
+    border-right: 1px solid #ddd;
+    padding-right: 10px;
+  }
+  
+  /* Ensure tab content takes remaining space */
+  .tab-content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow: auto; /* Prevents overflow issues */
+  }
+  
+  /* Ensure MatDialog styles do not break the layout */
+  .mat-dialog-container {
+    padding: 0 !important; /* Removes default padding */
+    overflow: hidden; /* Prevents scrolling issues */
+  }
+:host  ::ng-deep .mat-mdc-tab-labels{
+    flex-direction: column !important;
+  }

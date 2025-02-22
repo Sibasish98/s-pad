@@ -1,0 +1,19 @@
+<div>
+    <h4>Application Theme</h4>
+    <mat-form-field>
+    <mat-select (ngModelChange)="applyTheme($event)"[(ngModel)]="applicationTheme" placeholder="Select a theme">
+        @for (theme of Application_Themes;track theme){
+            <mat-option [value]="theme" >{{theme}}</mat-option>
+        }
+    </mat-select>
+    </mat-form-field>
+
+    <h4>Editor Theme</h4>
+    <mat-form-field>
+    <mat-select [(ngModel)]="editorTheme" placeholder="Select Editor theme">
+      @for (theme of Editor_Themes;track theme){
+        <mat-option [value]="theme">{{theme}}</mat-option>
+      }
+    </mat-select>
+    </mat-form-field>
+</div>

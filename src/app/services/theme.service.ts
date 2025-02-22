@@ -11,4 +11,12 @@ export class ThemeService {
   toggleTheme(): void {
     const isDark = document.body.classList.toggle(this.DARK_THEME_CLASS);
   }
+  
+  enableDarkTheme(){
+    document.body.classList.add(this.DARK_THEME_CLASS);
+  }
+
+  enableLightTheme(){
+    document.body.classList.remove(this.DARK_THEME_CLASS);
+  }
 }

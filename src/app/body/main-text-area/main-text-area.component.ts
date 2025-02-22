@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon'
 import {MatTooltipModule} from '@angular/material/tooltip';
 import * as Prism from 'prismjs';
 import 'prismjs/components/prism-json';
+import { SettingsService } from '../../services/settings.service'
 
 @Component({
   selector: 'app-main-text-area',
@@ -38,7 +39,8 @@ export class MainTextAreaComponent implements OnInit{
 
 
  constructor(
-  private toolUtilityService: ToolUtilityService
+  private toolUtilityService: ToolUtilityService,
+  private settingsService: SettingsService
  ){
   this.loadTabs();
  }
@@ -70,6 +72,9 @@ onQuickToolbarEvent(event:string){
     break;
     case QUICK_TOOL_BAR_EVENTS.SAVE_AS:
       this.toolUtilityService.saveAsFile(mainTextArea.name,mainTextArea.mainTextAreaInput.value)
+      break;
+    case QUICK_TOOL_BAR_EVENTS.SETTINGS:
+      this.settingsService.openSettings();
       break;
   }
  this.saveTabs();
@@ -143,7 +148,6 @@ loadTabs() {
 highlightCode(tab: DocumentTab) {
   setTimeout(() => {
     const codeElement = document.getElementById(`code-block-${tab.id}`);
-    console.log('ele ',codeElement)
     if (codeElement) {
       const highlighted = Prism.highlight(
         tab.mainTextAreaInput.value || '',

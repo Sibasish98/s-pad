@@ -1,0 +1,29 @@
+<div>
+    <h4 mat-dialog-title><mat-icon>settings</mat-icon>Settings</h4>
+</div>
+<mat-dialog-content class="settings-container">
+    <!-- Vertical Tabs -->
+    <mat-tab-group mat-align-tabs="start" class="vertical-tabs">
+      
+      <mat-tab label="Themes">
+        <div class="tab-content">
+            <app-themes></app-themes>
+        </div>
+      </mat-tab>
+  
+
+  
+      <mat-tab label="Preferences">
+        <div class="tab-content">
+          <h2>Preferences</h2>
+          <p>More settings coming soon...</p>
+        </div>
+      </mat-tab>
+  
+    </mat-tab-group>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-button >Close</button>
+    <!-- <button mat-flat-button >Okay</button> -->
+  </mat-dialog-actions>
